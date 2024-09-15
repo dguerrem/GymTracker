@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  message: string = 'Hello World!';
+  email: string = '';
+  password: string = '';
+  rememberMe: boolean = false;
+  hidePassword: boolean = true;
 }
