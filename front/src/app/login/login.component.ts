@@ -43,7 +43,7 @@ export class LoginComponent {
     if (this.email && this.password) {
       const params = { email: this.email, password: this.password };
 
-      this.http.get('http://localhost:3000/users/login', { params, responseType: 'text' })
+      this.http.get('https://gym-tracker-api-git-main-dguerrems-projects.vercel.app/users/login', { params, responseType: 'text' })
         .pipe(
           tap(response => {
             if (response === 'OK') {
