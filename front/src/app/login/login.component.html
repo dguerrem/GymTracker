@@ -17,14 +17,15 @@
           </mat-form-field>
   
           <mat-checkbox [(ngModel)]="rememberMe" name="rememberMe">Recordarme</mat-checkbox>
-          <a href="#">He olvidado mi contraseña</a>
         </form>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" class="login-button">Iniciar sesión</button>
+        <button mat-raised-button color="primary" class="login-button" (click)="onLogin()">Iniciar sesión</button>
       </mat-card-actions>
       <mat-card-footer>
-        <a href="#">¿No tienes una cuenta? Crear cuenta</a>
+        <a href="#">He olvidado mi contraseña</a>
+        <br>
+        <span>¿No tienes una cuenta? <a href="#">Crear cuenta</a></span>
       </mat-card-footer>
     </mat-card>
   </div>

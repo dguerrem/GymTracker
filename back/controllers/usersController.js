@@ -12,7 +12,7 @@ function getAllUsers(req, res) {
 }
 
 function login(req, res) {
-  const { email, password } = req.body;
+  const { email, password } = req.query;
   const query = "SELECT * FROM Usuarios WHERE Email = ? AND Password = ?";
 
   db.query(query, [email, password], (err, results) => {
@@ -20,10 +20,12 @@ function login(req, res) {
       res.status(500).send("Error en la consulta");
       return;
     }
-
-    results.length > 0
-      ? res.status(200).send("OK")
-      : res.status(401).send("Datos incorrectos");
+    
+    if (results.length > 0) {
+      res.status(200).send("OK")
+      return
+    }
+    res.status(401).send("Datos incorrectos");
   });
 }
 

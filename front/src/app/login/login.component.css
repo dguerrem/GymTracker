@@ -1,84 +1,87 @@
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-    padding: 20px;
-  }
-  
-  #login-form {
-    padding: 3rem 2rem;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: rgb(50, 182, 162);
+  background: linear-gradient(180deg, rgba(50, 182, 162, 1) 0%, rgba(149, 218, 171, 1) 100%);
+  padding: 20px;
+}
 
-  mat-card {
-    width: 400px;
-    padding: 20px;
-    border-radius: 12px; /* Ajustado ligeramente */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-  }
-  
-  mat-card-title {
-    text-align: center;
-    color: #ff5722; /* Color naranja */
-    margin-top: 30px; /* Más margen superior */
-    margin-bottom: 30px; /* Más margen inferior */
-  }
-  
-  mat-card-footer {
-    text-align: center;
-    color: #ff5722; /* Color naranja */
-  }
-  
-  mat-card-actions {
-    display: flex;
-    justify-content: center;
-  }
-  
-  a {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    color: #ff5722; /* Color naranja */
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 10px; /* Menos espacio entre el input de password y "Recordarme" */
-  }
-  
-  .password-field {
-    position: relative;
-  }
-  
-  .password-field button[mat-icon-button] {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%); /* Alineado verticalmente */
-  }
-  
-  mat-checkbox {
-    margin-top: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .login-button {
-    width: 80%;
-    border-radius: 15px; /* Ajustado ligeramente */
-    transition: background-color 0.3s ease;
-    background-color: #ff5722; /* Color naranja */
-    color: #ffffff;
-    padding: 0.5rem 0;
-  }
-  
-  .login-button:hover {
-    background-color: #e64a19; /* Color naranja oscuro */
-  }
-  
+mat-card {
+  width: 400px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+mat-card-title {
+  text-align: center;
+  color: #0B847A;
+  margin-bottom: 25px;
+  margin-top: 10px;
+}
+
+mat-card-footer {
+  text-align: center;
+  color: #0B847A;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+span {
+  color: black !important;
+}
+
+span, a {
+  display: inline;
+  text-align: center;
+  color: #0B847A;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field button[mat-icon-button] {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0B847A
+}
+
+mat-checkbox {
+  margin-bottom: 20px;
+}
+
+.login-button {
+  width: 80%;
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+  background-color: #0B847A !important;
+  color: #ffffff !important;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.login-button:hover {
+  background-color: #0b847abb !important;
+  transform: scale(1.05);
+}
