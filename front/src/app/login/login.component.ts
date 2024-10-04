@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { HttpClient, HttpClientModule, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap, catchError, of } from 'rxjs';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -47,11 +47,7 @@ export class LoginComponent {
         .pipe(
           tap(response => {
             if (response === 'OK') {
-              this.snackBar.open('Datos correctos', 'Cerrar', {
-                duration: 3000, // 3 segundos
-                panelClass: ['snackbar-success'] // Clase CSS para personalizar
-              });
-              // this.router.navigate(['/next-menu']); // Redirigir si es necesario
+              this.router.navigate(['/inicio']);
             }
           }),
           catchError((error) => {

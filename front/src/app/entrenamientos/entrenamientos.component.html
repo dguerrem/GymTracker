@@ -1,0 +1,41 @@
+<div class="dashboard-content">
+  <div class="exercise-header">
+    <input type="text" placeholder="Escribe el nombre del ejercicio" [(ngModel)]="newExerciseName" />
+    <button class="add-exercise-btn" (click)="addExercise()">+ Añadir Ejercicio</button>
+  </div>
+
+  <div class="exercise-card" *ngFor="let exercise of exercises">
+    <div class="exercise-header">
+      <h3>{{ exercise.name }}</h3>
+      <button class="delete-exercise-btn" (click)="deleteExercise(exercise)">&#10006;</button>
+    </div>
+
+    <div class="series" *ngFor="let series of exercise.series; let i = index">
+      <h4>Serie {{ i + 1 }}</h4>
+      <div class="series-fields">
+        <input type="number" [(ngModel)]="series.weight" placeholder="Peso" [disabled]="!series.editing" />
+        <input type="number" [(ngModel)]="series.reps" placeholder="Reps" [disabled]="!series.editing" />
+        <input type="number" [(ngModel)]="series.rest" placeholder="Descanso (s)" [disabled]="!series.editing" />
+        <input type="text" [(ngModel)]="series.notes" placeholder="Observaciones" [disabled]="!series.editing" />
+      </div>
+
+      <div class="series-actions">
+        <!-- Mostrar el botón de Guardar si estamos en modo edición -->
+        <button *ngIf="series.editing" (click)="saveSeries(series)" class="save-btn">
+          <i class="fas fa-save"></i> Guardar
+        </button>
+        <!-- Mostrar el botón de Editar si la serie está guardada pero no está siendo editada -->
+        <button *ngIf="!series.editing" (click)="editSeries(series)" class="edit-btn">
+          <i class="fas fa-edit"></i> Editar
+        </button>
+        <button (click)="deleteSeries(exercise, series)" class="delete-btn">
+          <i class="fas fa-trash"></i> Eliminar
+        </button>
+      </div>
+    </div>
+
+    <button (click)="addSeries(exercise)" class="add-series-btn">
+      <i class="fas fa-plus-circle"></i> Añadir Serie
+    </button>
+  </div>
+</div>
