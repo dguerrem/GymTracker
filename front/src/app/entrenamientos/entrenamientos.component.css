@@ -1,161 +1,148 @@
-.dashboard-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
+/* FUENTES Y ESTILOS BASE */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+}
 
-  .exercise-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    
-    input {
-      padding: 10px;
-      width: 80%;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 16px;
-    }
+.dashboard {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(135deg, #f0f2f5, #e0e7ff);
+}
 
-    .add-exercise-btn {
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 16px;
+/* CONTENIDO PRINCIPAL */
+.workout-tracker {
+  padding: 30px;
+  flex-grow: 1;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
 
-      &:hover {
-        background-color: #45a049;
-      }
-    }
+/* CABECERA */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  background-color: #2d3748;
+  color: white;
+  border-radius: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+/* FORMULARIO DE AÑADIR ENTRENAMIENTO */
+.add-workout {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  align-items: center;
+  background-color: #EDF2F7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.add-workout mat-form-field {
+  width: 45%;
+}
+
+.add-workout button {
+  background-color: #4CAF50;
+  color: #fff;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.2);
+}
+
+.add-workout button:hover {
+  background-color: #388E3C;
+  box-shadow: 0 6px 12px rgba(56, 142, 60, 0.3);
+}
+
+/* TABLA DE ENTRENAMIENTOS */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #343a40 !important;
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  background-color: #f4f7ff;
+}
+
+tr:hover td {
+  background-color: #e3ebff;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button.mat-icon-button {
+  transition: transform 0.2s;
+}
+
+button.mat-icon-button:hover {
+  transform: scale(1.2);
+}
+
+.mat-header-row, .mat-row {
+  border-bottom: 1px solid #ddd;
+}
+
+/* BOTONES EN LA TABLA */
+button.edit-btn, button.delete-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+button.edit-btn:hover, button.delete-btn:hover {
+  color: #4CAF50;
+  transform: scale(1.1);
+}
+
+button.delete-btn:hover {
+  color: #F44336;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .add-workout mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
   }
 
-  .exercise-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: transform 0.2s;
+  table {
+    font-size: 14px;
+  }
 
-    &:hover {
-      transform: scale(1.02);
-    }
-
-    .exercise-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      h3 {
-        font-size: 24px;
-        color: #333;
-      }
-
-      .delete-exercise-btn {
-        background: transparent;
-        border: none;
-        color: red;
-        font-size: 20px;
-        cursor: pointer;
-
-        &:hover {
-          color: darkred;
-        }
-      }
-    }
-
-    .series {
-      background: #f0f0f0;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 10px;
-
-      h4 {
-        margin-bottom: 10px;
-        font-size: 18px;
-      }
-
-      .series-fields {
-        display: flex;
-        gap: 10px;
-
-        input {
-          padding: 10px;
-          border-radius: 6px;
-          border: 1px solid #ddd;
-          font-size: 14px;
-
-          &:disabled {
-            background: #e9e9e9;
-          }
-        }
-      }
-
-      .series-actions {
-        margin-top: 10px;
-
-        button {
-          padding: 8px 16px;
-          margin-right: 10px;
-          border: none;
-          border-radius: 6px;
-          cursor: pointer;
-
-          i {
-            margin-right: 5px;
-          }
-
-          &.save-btn {
-            background-color: #28a745;
-            color: white;
-
-            &:hover {
-              background-color: #218838;
-            }
-          }
-
-          &.edit-btn {
-            background-color: #007bff;
-            color: white;
-
-            &:hover {
-              background-color: #0056b3;
-            }
-          }
-
-          &.delete-btn {
-            background-color: #dc3545;
-            color: white;
-
-            &:hover {
-              background-color: #c82333;
-            }
-          }
-        }
-      }
-    }
-
-    .add-series-btn {
-      background-color: #17a2b8;
-      color: white;
-      padding: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-
-      i {
-        margin-right: 5px;
-      }
-
-      &:hover {
-        background-color: #138496;
-      }
-    }
+  th, td {
+    padding: 10px;
   }
 }
+

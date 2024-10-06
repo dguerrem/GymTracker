@@ -47,7 +47,7 @@ export class LoginComponent {
         .pipe(
           tap(response => {
             if (response === 'OK') {
-              this.router.navigate(['/inicio']);
+              this.router.navigate(['/a']);
             }
           }),
           catchError((error) => {

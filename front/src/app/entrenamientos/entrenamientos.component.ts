@@ -1,68 +1,98 @@
 import { Component } from '@angular/core';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-
-interface Series {
-  weight: number | null;
-  reps: number | null;
-  rest: number | null;
-  notes: string;
-  saved: boolean;
-  editing: boolean;
-}
+import { Router } from '@angular/router';
 
 interface Exercise {
   name: string;
-  series: Series[];
+  sets: Set[];
 }
+
+interface Set {
+  reps: number;
+  weight: number;
+}
+
+interface Workout {
+  date: Date;
+  name: string;
+  exercises: Exercise[];
+}
+
 
 @Component({
   selector: 'app-entrenamientos',
   templateUrl: './entrenamientos.component.html',
   styleUrls: ['./entrenamientos.component.css'],
   standalone: true,
-  imports: [SidebarComponent, FormsModule, CommonModule],
+  imports: [
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule
+  ]
 })
 export class EntrenamientosComponent {
-  exercises: Exercise[] = [
-    { name: '', series: [] }
+  // Variables para nuevos entrenamientos
+  newWorkoutName: string = '';
+  newWorkoutDate: string = '';
+  
+  workouts = [
+    {
+      date: '2024-10-01',
+      name: 'Full Body Workout',
+      exercises: [
+        { name: 'Bench Press', sets: 4, reps: 12, weight: '70kg' },
+        { name: 'Squat', sets: 4, reps: 12, weight: '80kg' }
+      ]
+    },
+    {
+      date: '2024-10-02',
+      name: 'Leg Day',
+      exercises: [
+        { name: 'Deadlift', sets: 4, reps: 10, weight: '90kg' },
+        { name: 'Lunges', sets: 3, reps: 15, weight: '20kg' }
+      ]
+    }
   ];
-  newExerciseName: string = '';
 
-  addExercise() {
-    if (this.newExerciseName.trim()) {
-      this.exercises.push({ name: this.newExerciseName, series: [] });
-      this.newExerciseName = '';
+  displayedColumns: string[] = ['date', 'name', 'exercises', 'sets', 'actions'];
+
+  constructor(private router: Router) { }
+
+  addWorkout() {
+    if (this.newWorkoutName && this.newWorkoutDate) {
+      this.workouts.push({
+        date: this.newWorkoutDate,
+        name: this.newWorkoutName,
+        exercises: [] // Puedes agregar un formulario para añadir ejercicios aquí
+      });
+      this.newWorkoutName = '';
+      this.newWorkoutDate = '';
+      // Navegar a la página de detalles del entrenamiento
+      // this.router.navigate(['/detalleEntreamiento']); (ajusta la ruta si es necesario)
     }
   }
-
-  deleteExercise(exercise: Exercise) {
-    this.exercises = this.exercises.filter(e => e !== exercise);
+  
+  viewWorkout(workout: Workout) {
+    this.router.navigate(['/a/detalleEntreamiento'], { state: { workout } });
   }
 
-  addSeries(exercise: Exercise) {
-    const newSeries: Series = {
-      weight: null,
-      reps: null,
-      rest: null,
-      notes: '',
-      saved: false,
-      editing: true
-    };
-    exercise.series.push(newSeries);
+  deleteWorkout(workout: Workout) {
+    // this.workouts = this.workouts.filter(w => w !== workout);
   }
 
-  saveSeries(series: Series) {
-    series.saved = true;
-    series.editing = false;
-  }
-
-  editSeries(series: Series) {
-    series.editing = true;
-  }
-
-  deleteSeries(exercise: Exercise, series: Series) {
-    exercise.series = exercise.series.filter(s => s !== series);
+  getTotalSets(workout: Workout): number {
+    return workout.exercises.reduce((total, exercise) => total + exercise.sets.length, 0);
   }
 }

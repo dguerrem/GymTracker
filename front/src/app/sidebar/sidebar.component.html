@@ -1,16 +1,14 @@
 <div class="sidebar" [class.collapsed]="isCollapsed">
-  <!-- LOGO -->
   <div class="sidebar-logo">
     <img src="https://media.licdn.com/dms/image/v2/D4D03AQGH-1KB88_gog/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1726126607318?e=2147483647&v=beta&t=2Zj_-ATAo--PwgBo76d9CJGpNwBfZ-dzNCMjuSJkS-U" alt="Logo">
     <h2>Gym Tracker</h2>
   </div>
 
-  <!-- NAVEGACIÓN -->
   <nav class="nav-links">
-    <a routerLink="/inicio" routerLinkActive="active" routerLinkActiveOptions="{ exact: true }">
+    <a routerLink="/a/inicio" routerLinkActive="active">
       <i class="fas fa-home"></i> <span>Inicio</span>
     </a>
-    <a routerLink="/entrenamientos" routerLinkActive="active">
+    <a routerLink="/a/entrenamientos" routerLinkActive="active">
       <i class="fas fa-dumbbell"></i> <span>Entrenamientos</span>
     </a>
     <a routerLink="/reportes" routerLinkActive="active">
@@ -21,15 +19,12 @@
     </a>
   </nav>
 
-  <!-- PERFIL DE USUARIO -->
   <div class="sidebar-user" (click)="logout()">
     <i class="fas fa-door-open"></i>
     <p>Salir</p>
   </div>
 
-  <!-- BOTÓN PARA COLAPSAR -->
-<button class="collapse-btn" (click)="toggleSidebar()">
-  <i class="fas" [ngClass]="{'fa-chevron-left': !isCollapsed, 'fa-chevron-right': isCollapsed}"></i>
-</button>
-
+  <button class="collapse-btn" (click)="toggleSidebar()">
+    <i class="fas" [ngClass]="{'fa-chevron-left': !isCollapsed, 'fa-chevron-right': isCollapsed}"></i>
+  </button>
 </div>

@@ -1,0 +1,70 @@
+<div class="workout-details">
+    <h2>{{ workout.name }} - {{ workout.date | date }}</h2>
+    <button mat-button (click)="goBack()">← Back to Workouts</button>
+  
+    <div *ngFor="let exercise of workout.exercises; let i = index">
+      <h3>{{ exercise.name }}</h3>
+      <table mat-table dataSource="exercise.sets" class="mat-elevation-z8">
+        
+        <!-- Set number -->
+        <ng-container matColumnDef="set">
+          <th mat-header-cell *matHeaderCellDef> Set </th>
+          <td mat-cell *matCellDef="let set; let idx = index"> {{ idx + 1 }} </td>
+        </ng-container>
+  
+        <!-- Reps -->
+        <ng-container matColumnDef="reps">
+          <th mat-header-cell *matHeaderCellDef> Reps </th>
+          <td mat-cell *matCellDef="let set"> {{ set.reps }} </td>
+        </ng-container>
+  
+        <!-- Weight -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef> Weight (kg) </th>
+          <td mat-cell *matCellDef="let set"> {{ set.weight }} </td>
+        </ng-container>
+  
+        <!-- Rest -->
+        <ng-container matColumnDef="rest">
+          <th mat-header-cell *matHeaderCellDef> Rest (s) </th>
+          <td mat-cell *matCellDef="let set"> {{ set.rest }} </td>
+        </ng-container>
+  
+        <!-- Observaciones -->
+        <ng-container matColumnDef="observations">
+          <th mat-header-cell *matHeaderCellDef> Observations </th>
+          <td mat-cell *matCellDef="let set"> {{ set.observations }} </td>
+        </ng-container>
+  
+        <!-- Actions -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let set">
+            <button mat-icon-button color="primary" (click)="editSet(exercise, set)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteSet(exercise, set)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+  
+        <!-- Render Columnas -->
+        <tr mat-header-row *matHeaderRowDef="setColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: setColumns;"></tr>
+      </table>
+  
+      <button mat-button (click)="addSet(exercise)">+ Add Set</button>
+    </div>
+  
+    <div class="add-exercise">
+      <mat-form-field appearance="outline">
+        <mat-label>Exercise name</mat-label>
+        <input matInput [(ngModel)]="newExerciseName" placeholder="Exercise name" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="addExercise()">
+        Add Exercise
+      </button>
+    </div>
+  </div>
+  

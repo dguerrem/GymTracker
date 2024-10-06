@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { MatListItem, MatNavList } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -12,6 +12,7 @@ import { Router, RouterOutlet } from '@angular/router';
     MatNavList,
     MatListItem,
     RouterOutlet,
+    RouterModule
   ],
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',

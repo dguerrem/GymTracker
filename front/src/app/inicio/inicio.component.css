@@ -12,7 +12,6 @@
   display: flex;
   height: 100vh;
   background: linear-gradient(135deg, #f0f2f5, #e0e7ff);
-  overflow: hidden;
 }
 
 /* ESTILOS PARA EL CONTENIDO PRINCIPAL */
@@ -21,7 +20,6 @@
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 20px 0 0 20px;
   overflow-y: auto;
 }
 
@@ -38,6 +36,8 @@
   background-color: #2d3748;
   color: white;
   border-radius: 1rem;
+  width: 100%;
+  text-align: center;
 }
 
 .actions .btn {
@@ -245,11 +245,6 @@
   max-width: 100%;
   /* Para que el gráfico sea responsive */
   margin-top: 20px;
-}
-
-.header h1 {
-  width: 100%;
-  text-align: center;
 }
 
 /* RESPONSIVE */

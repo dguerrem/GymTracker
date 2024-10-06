@@ -1,11 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css'],
   standalone: true,
-  imports: [SidebarComponent],
+  imports: [CommonModule, RouterOutlet],
 })
 export class InicioComponent { }
